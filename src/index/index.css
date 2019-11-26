@@ -17,3 +17,15 @@ body {
     align-items: center;
 }
 
+div {
+    border: 1px solid green;
+}
+
+.block {
+    background: #c29900;
+}
+
+.big {
+    width: 100px;
+    height: 100px;
+}
