@@ -1,9 +1,27 @@
 import "../utils/utils.css";
 import "./index.css";
 import {buildElement} from '../utils/html';
+import {timeoutPromise} from "../utils/utils_module";
+import {playArea} from "./play_area";
 
 async function main() {
   console.log('hello sd game!');
+
+
+  console.table(playArea);
+
+  playArea.forEach(row => {
+    row.forEach(item => {
+      const box = buildElement('div', {class: 'box'});
+      document.body.appendChild(box);
+    });
+    const br = buildElement('br');
+    document.body.appendChild(br);
+  });
+
+
+
+
 
   const container = buildElement('div', {
     style: 'border: 1px solid red',
@@ -29,11 +47,11 @@ async function main() {
   });
 
 
-  container.appendChild(nestedContainer);
-
-  document.body.appendChild(container);
-  container.remove();
-  document.body.appendChild(container);
+  // container.appendChild(nestedContainer);
+  //
+  // document.body.appendChild(container);
+  // container.remove();
+  // document.body.appendChild(container);
 
 
   window.addEventListener('keypress', function (e) {
