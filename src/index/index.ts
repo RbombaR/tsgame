@@ -11,7 +11,13 @@ async function main() {
 
   playArea.forEach(row => {
     row.forEach(item => {
-      const box = buildElement('div', {class: 'box'});
+      const box = buildElement('div', {class: 'box',
+        handlers: {
+          onmouseenter: () => box.style.background = 'red',
+          onmouseleave: () => box.style.background = 'grey',
+          onclick: () => box.style.background = 'pink'
+        }});
+      //box.onmouseleave = () => box.style.background = 'grey';
       document.body.appendChild(box);
     });
     const br = buildElement('br');
@@ -69,6 +75,5 @@ async function main() {
   })
 
 }
-
 
 main();
