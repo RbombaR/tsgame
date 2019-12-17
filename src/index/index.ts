@@ -3,6 +3,7 @@ import "./index.css";
 import {buildElement} from '../utils/html';
 import {timeoutPromise} from "../utils/utils_module";
 import {playArea} from "./play_area";
+import {redraw} from "./redraw";
 
 async function main() {
   console.log('hello sd game!');
@@ -13,16 +14,24 @@ async function main() {
     row.forEach(item => {
       const box = buildElement('div', {class: 'box',
         handlers: {
-          onmouseenter: () => box.style.background = 'red',
+          onmouseenter: () => box.style.background = 'green',
           onmouseleave: () => box.style.background = 'grey',
           onclick: () => box.style.background = 'pink'
         }});
-      //box.onmouseleave = () => box.style.background = 'grey';
       document.body.appendChild(box);
+      item.node = box;
     });
     const br = buildElement('br');
     document.body.appendChild(br);
   });
+
+  while(true){
+        redraw();
+
+      await timeoutPromise(2000);
+  }
+
+
 
   const container = buildElement('div', {
     style: 'border: 1px solid red',

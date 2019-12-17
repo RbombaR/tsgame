@@ -1,5 +1,16 @@
 const rows = 5;
 const columns = 4;
 
-export const playArea = Array(rows).fill(0).map(() => Array(columns).fill(0).map(() => ({})));
+interface Item {
+    node?: HTMLElement;
+    className: string;
+}
+
+export const playArea: Item[][] = Array(rows)
+    .fill(0)
+    .map(() => Array(columns)
+        .fill(0)
+        .map(() => ({
+            className: Math.random() > 0.5 ? 'box' : 'box red'
+        })));
 
